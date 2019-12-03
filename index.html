@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Shooty booty</title>
+
+
+</head>
+    <script src="js/pixi.js"></script>
+    <script src="js/stars.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/enemy.js"></script>
+    <script src="js/rocket.js"></script>
+    
+<body onload="init()">
+    <script type="text/javascript">
+        var renderer = PIXI.autoDetectRenderer(800, 600);
+        document.body.appendChild(renderer.view);
+        
+        
+        
+        var stage = new PIXI.Container();
+        var stars;
+        
+
+        function init(){
+            renderer.backgroundColor = 0x000000;
+            renderer.render(stage);
+            stars = new Stars();
+            enemy = new Enemy();
+            player = new Player();
+            loop();
+        }
+
+        function loop(){
+            stars.update();
+            enemy.update();
+            player.update();
+            Rocket.list.map((element) => {
+                element.update();
+            });
+            requestAnimationFrame(loop);
+            renderer.render(stage);
+        }
+        
+        
+        
+        
+    </script>
+
+
+</body>
+</html>
